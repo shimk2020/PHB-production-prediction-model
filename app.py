@@ -26,7 +26,7 @@ with col2:
 with col3:
     p_conc = st.number_input("P concentration (g/L)", value=0.0, min_value=0.0)
 
-if st.button("Predict PHB concentration (g/L)"):
+if st.button("Predict"):
     # 3. Prepare Input
     # Must be in the exact order: [C, N, P]
     input_data = np.array([[c_conc, n_conc, p_conc]])
@@ -45,3 +45,4 @@ if st.button("Predict PHB concentration (g/L)"):
     result_value = pred_final[0][0]
 
     st.success(f"Predicted PHB Concentration: {result_value:.4f} g/L")
+
