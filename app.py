@@ -12,21 +12,21 @@ model = bundle['model']
 x_scaler = bundle['x_scaler']
 y_scaler = bundle['y_scaler']
 
-st.title("PHB Concentration Prediction")
-st.write("Enter the nutrient concentrations to predict PHB production.")
+st.title("PHB production prediction model")
+st.write("Enter C, N, P concentrations to predict PHB production.")
 
 # 2. User Inputs (C, N, P)
 # We use columns to make it look nice side-by-side
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    c_conc = st.number_input("C Concentration (g/L)", value=0.0, min_value=0.0)
+    c_conc = st.number_input("C concentration (g/L)", value=0.0, min_value=0.0)
 with col2:
-    n_conc = st.number_input("N Concentration (g/L)", value=0.0, min_value=0.0)
+    n_conc = st.number_input("N concentration (g/L)", value=0.0, min_value=0.0)
 with col3:
-    p_conc = st.number_input("P Concentration (g/L)", value=0.0, min_value=0.0)
+    p_conc = st.number_input("P concentration (g/L)", value=0.0, min_value=0.0)
 
-if st.button("Predict PHB"):
+if st.button("Predict PHB concentration (g/L)"):
     # 3. Prepare Input
     # Must be in the exact order: [C, N, P]
     input_data = np.array([[c_conc, n_conc, p_conc]])
@@ -43,4 +43,5 @@ if st.button("Predict PHB"):
     
     # 7. Show Result
     result_value = pred_final[0][0]
+
     st.success(f"Predicted PHB Concentration: {result_value:.4f} g/L")
